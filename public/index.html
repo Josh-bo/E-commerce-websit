@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing page</title>
+    <link rel="stylesheet" href="/bootstrap-5.2.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-">
+    <!-- Navbar
+    <section>
+        <div class="ms-2 mt-2">
+            <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </button>
+            
+            <div class="offcanvas offcanvas-start bg-danger" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+                <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                <div>
+                    I will not close if you click outside of me.
+                </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+        <!-- Navbar -->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-danger">
+            <div class="container-fluid">
+              <a class="navbar-brand text-light" href="#">Navbar</a>
+              <button class="navbar-toggler bg-light btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active  text-light" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link  text-light" href="adminlogin.html">Admin page</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link  text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </section>
+
+    <!-- Hero section -->
+    <section>
+        <div></div>
+    </section>
+
+    <!-- Sales section -->
+    <section>
+      <div class="container-fluid mt-5 p-2" >
+        <div class="row" id="salesDisplay">
+          <div class="card col-sm-12 col-md-6 col-lg-4 ms-2 mt-3" style="width: 20.5rem;" >
+            <img src="/Images/jackson-free-personal-resume-website-template.webp" class="card-img-top" alt="..." style="height: 100%;">
+            <div class="card-body text-center">
+              <h5 class="card-title">T - shirt</h5>
+              <p class="card-text">#4,500 <del>#5,000</del></p>
+            </div>
+            <button class="btn btn-danger my-2" onclick="buy()">ADD CHART</button>
+          </div>
+         </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      
+      let getDetailsBack = JSON.parse(localStorage.getItem('dashDetails'))
+      console.log(getDetailsBack)
+
+      let newGetDetailsBack = getDetailsBack.map((eachsales, i) => {
+        salesDisplay.innerHTML += `
+        <div class="card col-sm-12 col-md-6 col-lg-4 ms-2 mt-3" style="width: 20.5rem;">  
+            <img id="imgPreview" src="" class="card-img-top p-4" alt="..." style="height: 40vh;">
+            <div class="card-body text-center">
+              <h5 class="card-title"> ${eachsales.salename}</h5>
+              <p class="card-text">${eachsales.saledesc}</p>
+              <p class="card-text"><span>₦ ${eachsales.salePresPrice }</span> <del>₦ ${eachsales.salePrevPrice}</del></p>
+              </div>
+              <button class="btn btn-danger my-2" onclick="buy()">ADD CHART</button>
+              </div>
+              
+              ` 
+            })
+
+            document.addEventListener("DOMContentLoaded", () => {
+                  const recentImageDataUrl = localStorage.getItem("recent-image");
+            
+                  if(recentImageDataUrl){
+                      document.querySelector("#imgPreview").setAttribute("src", recentImageDataUrl)
+                  }
+              })
+            </script>
+
+<script src="/bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
